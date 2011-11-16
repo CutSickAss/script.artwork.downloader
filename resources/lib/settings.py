@@ -46,6 +46,10 @@ class _settings:
         self.centralfolder_movies = __addon__.getSetting("centralfolder_movies")
         self.centralfolder_tvshows = __addon__.getSetting("centralfolder_tvshows")
 
+        self.custom_enable = __addon__.getSetting("custom_enable") == 'true'
+        self.custom_folder = __addon__.getSetting("custom_folder")
+
+        
         self.limit_artwork = __addon__.getSetting("limit_artwork") == 'true'
         self.limit_extrafanart_max = int(__addon__.getSetting("limit_extrafanart_max").rstrip('0').rstrip('.').rstrip(','))
         self.limit_extrafanart_rating = int(__addon__.getSetting("limit_extrafanart_rating").rstrip('0').rstrip('.').rstrip(','))
@@ -114,6 +118,9 @@ class _settings:
         log('## Centralize Extrafanart = %s' % str(self.centralize_enable))
         log('## Central Movies Folder = %s' % str(self.centralfolder_movies))
         log('## Central TV Shows Folder = %s' % str(self.centralfolder_tvshows))
+
+        log('## Custom Enable = %s' % str(self.custom_enable))
+        log('## Custom Folder = %s' % str(self.custom_folder))
         
         log('## Limit Artwork = %s' % str(self.limit_artwork))
         log('## - Extrafanart Max = %s' % str(self.limit_extrafanart_max))

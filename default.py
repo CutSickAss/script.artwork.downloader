@@ -231,12 +231,31 @@ def download_artwork(self, media_list, providers):
         log('Path: %s' % self.media_path)
         self.targetdirs = []
         self.target_thumbsdirs = []
-        self.target_artworkdir = []
-        extrafanart_dir = os.path.join(self.media_path, 'extrafanart')
-        extrathumbs_dir = os.path.join(self.media_path, 'extrathumbs')
-        self.targetdirs.append(extrafanart_dir)
-        self.target_thumbsdirs.append(extrathumbs_dir)
-        self.target_artworkdir.append(self.media_path)
+        self.target_artworkdir = []        
+        
+        ### Normal/custom Artwork folders
+        if self.settings.custom_enable:
+            log('Custom artwork folders enable')
+            artwork_dir = os.path.join(self.settings.custom_folder, self.mediatype , currentmedia["name"])
+            extrafanart_dir = os.path.join(artwork_dir, 'extrafanart')
+            extrathumbs_dir = os.path.join(artwork_dir, 'extrathumbs')
+            #log('Media type dir : %s' %mediatype_dir)
+            log('Artwork dir    : %s' %artwork_dir)
+            log('Extrafanart dir: %s' %extrafanart_dir)
+            log('Extrathumbs dir: %s' %extrathumbs_dir)
+            
+            self.targetdirs.append(extrafanart_dir)
+            self.target_thumbsdirs.append(extrathumbs_dir)
+            self.target_artworkdir.append(artwork_dir)
+        else:
+            log('Custom disable')
+            extrafanart_dir = os.path.join(self.media_path, 'extrafanart')
+            extrathumbs_dir = os.path.join(self.media_path, 'extrathumbs')
+            
+            self.targetdirs.append(extrafanart_dir)
+            self.target_thumbsdirs.append(extrathumbs_dir)
+            self.target_artworkdir.append(self.media_path)
+        
         ### Check if using the centralize option
         if self.settings.centralize_enable:
             if self.mediatype == 'tvshow':
