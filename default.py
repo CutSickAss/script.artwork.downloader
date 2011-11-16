@@ -236,7 +236,7 @@ def download_artwork(self, media_list, providers):
         ### Normal/custom Artwork folders
         if self.settings.custom_enable:
             log('Custom artwork folders enable')
-            artwork_dir = os.path.join(self.settings.custom_folder, self.mediatype , currentmedia["name"])
+            artwork_dir = os.path.join(self.settings.custom_folder, self.mediatype , os.path.split(self.media_path)[1])
             extrafanart_dir = os.path.join(artwork_dir, 'extrafanart')
             extrathumbs_dir = os.path.join(artwork_dir, 'extrathumbs')
             #log('Media type dir : %s' %mediatype_dir)
