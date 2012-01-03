@@ -17,6 +17,7 @@ __version__     = __addon__.getAddonInfo('version')
 __addonpath__   = __addon__.getAddonInfo('path')
 __icon__        = __addon__.getAddonInfo('icon')
 __localize__    = __addon__.getLocalizedString
+dbg = False # Set to false if you don't want debugging for commoncache function
 
 ### import libraries
 from traceback import print_exc
